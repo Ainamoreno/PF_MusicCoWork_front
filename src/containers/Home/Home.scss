@@ -1,13 +1,9 @@
+.colImg {
+  padding: 0 !important;
+  flex-direction: column;
+  align-items: center;
 
-.colImg{
-    height: 32em;
-    padding: 0 !important;
-    flex-direction: column;
-    align-items: center;
-}
-
-.titleHome{
-
+  .titleHome {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,17 +14,28 @@
     width: max-content;
     color: white;
 
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
-    
-}
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+  }
 
-.subTitle{
+  .subTitle {
     color: white;
+  }
 }
 
-.imgPrin{
-    position: absolute;
-    width: 100%;
-    z-index: -1;
+.icon {
+  margin-left: 0.5em;
+}
+
+.titleServicios {
+  width: 7em;
+  border-top: 5px solid #e4d6c393;
+  border-bottom: 5px solid #e4d6c393;
+  color: #4b4133;
+}
+
+.rowTitle {
+  height: 35em;
+  background-image: url("./../../img/libro.jpg");
+  background-size: cover;
 }

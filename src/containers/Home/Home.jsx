@@ -3,13 +3,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./Home.scss";
 import imgLibro from "./../../img/libro.jpg";
 
+import { SlMusicToneAlt } from "react-icons/sl";
+import { SlBubbles } from "react-icons/sl";
+import { GiBookshelf } from "react-icons/gi";
+import { AiOutlineAudio } from "react-icons/ai";
+
 function Home() {
   return (
     <Container fluid>
-      <Row className="rowTitle mb-5">
+      <Row className="rowTitle ">
         <Col className="p-0 d-flex justify-content-center colImg">
-          <img className="imgPrin" alt="" src={imgLibro}></img>
-          <div className="pt-5">
+          <div className="pt-5 divTitle">
             <h1 className="pb-2 titleHome">Coworking para músicos</h1>
           </div>
           <div className="pt-5">
@@ -17,8 +21,10 @@ function Home() {
           </div>
         </Col>
       </Row>
-      <Row>
-        <Col className="mb-5">
+
+      <Row className="secondRow">
+        <Col className="mt-5 mb-3">
+        
           <div>
             <h4 className="d-flex justify-content-center">
               El primer espacio de coworking i música en Valencia
@@ -31,38 +37,54 @@ function Home() {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
-        <div className="mt-5">
-          <h2 className="d-flex justify-content-center">Servicios</h2>
+        <div className="mt-5 d-flex justify-content-center">
+          <h2 className="d-flex justify-content-center titleServicios">Servicios </h2>
         </div>
-        <Col className="col-3">
+        <Col xs={12} md={3}>
           <div className="mt-5">
-            <h4 className="d-flex justify-content-center">Salas de ensayo</h4>
+            <h4 className="d-flex justify-content-center">
+              Salas de ensayo <SlMusicToneAlt className="icon" />{" "}
+            </h4>
             <p className="d-flex justify-content-center">
-              Si necesitas un espacio para ensayar totalmente equipado, puedes
-              regístrarte y alquilar por días nuestras salas.
+              Salas de ensayo totalmente equipadas para que vengas con tu
+              instrumento y dediques el día a lo que más te gusta.
             </p>
           </div>
-          <div className="mt-5">
-            <h4 className="d-flex justify-content-center">Salas de estudio</h4>
+          </Col>
+          <Col xs={12} md={3}> <div className="mt-5">
+            <h4 className="d-flex justify-content-center">
+              Salas de estudio <GiBookshelf className="icon" />
+            </h4>
             <p className="d-flex justify-content-center">
-              Si necesitas un espacio para ensayar totalmente equipado, puedes
-              regístrarte y alquilar por días nuestras salas.
+              Si necesitas estudiar alguna asignatura de conservatorio o del
+              instituto además de ensayar instrumento, también tenemos salas
+              totalmente equipadas para ello.
+            </p>
+          </div></Col>
+         
+        </Row>
+        <Row className="d-flex justify-content-center">
+        <Col xs={12} md={3}>
+          <div className="mt-5">
+            <h4 className="d-flex justify-content-center">
+              Zona de descanso <SlBubbles className="icon" />
+            </h4>
+            <p className="d-flex justify-content-center">
+              Y para descansar durante los días de estudio o una vez acabada la
+              sesión de ensayo, nuestra sala de relax.
             </p>
           </div>
+          
         </Col>
-        <Col className="col-3">
-          <div className="mt-5">
-            <h4 className="d-flex justify-content-center">Sala de eventos</h4>
+        <Col xs={12} md={3}>
+        <div className="mt-5">
+            <h4 className="d-flex justify-content-center">
+              Sala de eventos <AiOutlineAudio className="icon" />{" "}
+            </h4>
             <p className="d-flex justify-content-center">
-              Si necesitas un espacio para ensayar totalmente equipado, puedes
-              regístrarte y alquilar por días nuestras salas.
-            </p>
-          </div>
-          <div className="mt-5">
-            <h4 className="d-flex justify-content-center">Zona de descanso</h4>
-            <p className="d-flex justify-content-center">
-              Si necesitas un espacio para ensayar totalmente equipado, puedes
-              regístrarte y alquilar por días nuestras salas.
+              Cada mes tenemos diferentes audiciones y/o actuaciones de los
+              mejores músicos de Valencia. Podrás reservar tu asistencia a los
+              eventos que desees asistir.
             </p>
           </div>
         </Col>

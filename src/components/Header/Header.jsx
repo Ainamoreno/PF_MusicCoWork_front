@@ -18,9 +18,6 @@ function BasicExample() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {/* <Nav.Link href="#home"><div className="headersName" >
-              Home
-            </div></Nav.Link> */}
             <Nav.Link ><div className="headersName" onClick={() => navigate("/rooms")}>
               Salas
             </div></Nav.Link>
@@ -29,6 +26,12 @@ function BasicExample() {
             </div></Nav.Link>
             <Nav.Link ><div className="headersName" onClick={() => navigate("/about")}>
               Sobre MusicCoWork
+            </div></Nav.Link>
+            <Nav.Link ><div className="headersName" onClick={() => navigate("/register")}>
+              Regístrate
+            </div></Nav.Link>
+            <Nav.Link ><div className="headersName" onClick={() => navigate("/login")}>
+              Inicia sesión
             </div></Nav.Link>
             <NavDropdown title="Profile" id="basic-nav-dropdown">
               <NavDropdown.Item  onClick={() => navigate("/reservationsrooms")} >Mis reservas</NavDropdown.Item>

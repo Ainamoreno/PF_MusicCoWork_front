@@ -4,6 +4,10 @@
   .headerDesign {
     background-image: linear-gradient(to top, #d5bfb2 0%, #e4d6c393 100%);
 
+    .headersName:hover{
+      font-weight: 700;
+    }
+
     .logoHeader {
       width: 7em;
     }

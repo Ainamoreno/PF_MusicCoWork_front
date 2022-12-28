@@ -11,6 +11,7 @@ import Register from './containers/Register/Register';
 import ReservationsEvents from './containers/User/ReservationsEvents/ReservationsEvents';
 import ReservationsRooms from './containers/User/ReservationsRooms/ReservationsRooms';
 import About from './containers/About/About';
+import Login from './containers/Login/Login';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/events' element={<Events/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='/about' element={<About/>} />
+        <Route path='/login' element={<Login/>} />
         <Route path='/reservationsrooms' element={<ReservationsRooms/>} />
         <Route path='/reservationsevents' element={<ReservationsEvents/>} />
       </Routes>

@@ -6,12 +6,9 @@ import "./About.scss";
 function About() {
   return (
     <Container fluid className="aboutDesign">
-      {/* <Row className="rowDesign1">
-        <Col className="mt-3 display-flex"></Col>
-      </Row> */}
       <Row >
         <Col className="p-5">
-          <h3 className="tracking-in-contract-bck">Sobre MusicCoWork</h3>
+          <h3 className="tracking-in-contract-bck titleAbout">Sobre MusicCoWork</h3>
           <p>
             Somos un grupo de amigos que decidimos dar el paso de crear este
             pequeño y gran proyecto.

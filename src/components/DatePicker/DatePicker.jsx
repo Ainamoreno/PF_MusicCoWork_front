@@ -6,11 +6,11 @@ import Stack from "@mui/material/Stack";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
+import './DatePicker.scss'
 
 
 export default function ResponsiveDatePickers() {
-  const [value, setValue] = React.useState(dayjs("2022-04-07"));
+  const [value, setValue] = React.useState(dayjs("2023-02-25"));
   let day = `${value.$D}`;
   day.split("");
   let month = `${value.$M + 1}`;
@@ -27,9 +27,9 @@ export default function ResponsiveDatePickers() {
   console.log(date);
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={"es"}>
-      <Stack spacing={3}>
-        <DatePicker
+    <LocalizationProvider  dateAdapter={AdapterDayjs} adapterLocale={"es"} >
+      <Stack spacing={3} className='datepicker'>
+        <DatePicker 
           disablePast
           label="Introduce la fecha"
           openTo="year"
@@ -38,7 +38,7 @@ export default function ResponsiveDatePickers() {
           onChange={(newValue) => {
             setValue(newValue);
           }}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <TextField {...params}/>}
         />
       </Stack>
     </LocalizationProvider>

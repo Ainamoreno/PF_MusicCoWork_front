@@ -1,8 +1,12 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, {useState} from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Rooms.scss";
 import room from "./../../img/rooms.jpg";
+import ResponsiveDatePickers from "../../components/DatePicker/DatePicker";
+
 function Rooms() {
+  const [date, setDate] = useState('');
+
   return (
     <Container>
       <Row className="mt-5">
@@ -18,9 +22,11 @@ function Rooms() {
         </Col>
       </Row>
       <Row className="mt-5 d-flex justify-content-center">
-        <Col md ={7} className='mb-3' >
+        <Col md={7} className="mb-3">
           <div className="d-flex justify-content-center flex-column">
-            <h3 className="d-flex justify-content-center titleRoom">Nombre de la sala</h3>
+            <h3 className="d-flex justify-content-center titleRoom">
+              Nombre de la sala
+            </h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
               alias quaerat perferendis, sit quia molestiae quam iure asperiores
@@ -29,6 +35,12 @@ function Rooms() {
             </p>
             <h6>De 09:00 a 20:00h</h6>
             <h6>El precio es de: 5€/día</h6>
+            <div className="d-flex justify-content-between mt-3">
+              <ResponsiveDatePickers />
+              <div>
+                <Button variant="secondary">Reserva</Button>
+              </div>
+            </div>
           </div>
         </Col>
       </Row>

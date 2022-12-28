@@ -1,7 +1,7 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Events.scss";
-import auditorio from './../../img/auditorio1.jpg'
+import auditorio from "./../../img/auditorio1.jpg";
 function Events() {
   return (
     <Container>
@@ -28,10 +28,13 @@ function Events() {
             </p>
             <h6>Fecha: 12-10-2023</h6>
           </div>
+          <div className="d-flex justify-content-end mt-3">
+              <Button variant="secondary">Confirma asistencia</Button>
+          </div>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mb-3">
-        <img className='w-75' src={auditorio} alt=""></img>
+        <img className="w-75" src={auditorio} alt=""></img>
       </Row>
     </Container>
   );

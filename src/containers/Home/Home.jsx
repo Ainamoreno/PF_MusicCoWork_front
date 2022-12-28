@@ -16,10 +16,10 @@ function Home() {
       <Row className="rowTitle ">
         <Col className="p-0 d-flex justify-content-center colImg">
           <div className="pt-5 divTitle">
-            <h1 className="pb-2 titleHome tracking-in-contract-bck">Coworking para músicos</h1>
+            <h2 className="pb-2 titleHome tracking-in-contract-bck">Coworking para músicos</h2>
           </div>
-          <div className="pt-5">
-            <h3 className="pb-2 subTitle">Tu espacio de música y trabajo</h3>
+          <div className="pt-5 ">
+            <h4 className="pb-2 subTitle">Tu espacio de música y trabajo</h4>
           </div>
         </Col>
       </Row>
@@ -31,9 +31,10 @@ function Home() {
             </h4>
             <p className="d-flex justify-content-center">
               Si necesitas un espacio para ensayar totalmente equipado, puedes
-              <strong className="register" onClick={() => navigate("/register")}>&nbsp; registrarte &nbsp;</strong> y alquilar por días
+              registrarte y alquilar por días
               nuestras salas.
             </p>
+            <p className="register d-flex justify-content-center" onClick={() => navigate("/register")}>Regístrate aquí</p>
           </div>
         </Col>
       </Row>

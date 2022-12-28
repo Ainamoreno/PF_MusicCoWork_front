@@ -11,7 +11,7 @@ function About() {
       </Row> */}
       <Row >
         <Col className="p-5">
-          <h3>Sobre MusicCoWork</h3>
+          <h3 className="tracking-in-contract-bck">Sobre MusicCoWork</h3>
           <p>
             Somos un grupo de amigos que decidimos dar el paso de crear este
             pequeño y gran proyecto.

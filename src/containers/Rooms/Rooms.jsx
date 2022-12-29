@@ -1,11 +1,27 @@
-import React, {useState} from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import "./Rooms.scss";
 import room from "./../../img/rooms.jpg";
-import ResponsiveDatePickers from "../../components/DatePicker/DatePicker";
-
+import { getRooms } from "../../services/rooms";
+import Room from "../../components/Room/Room";
 function Rooms() {
-  const [date, setDate] = useState('');
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+   getAllRooms()
+  }, []);
+
+  const getAllRooms = () => {
+    setLoading(true);
+    getRooms().then((res)=> {
+
+      setLoading(false);
+      setRooms(res.data.data)
+      console.log(rooms)
+    })
+  };
 
   return (
     <Container>
@@ -22,27 +38,14 @@ function Rooms() {
         </Col>
       </Row>
       <Row className="mt-5 d-flex justify-content-center">
-        <Col md={7} className="mb-3">
-          <div className="d-flex justify-content-center flex-column">
-            <h3 className="d-flex justify-content-center titleRoom">
-              Nombre de la sala
-            </h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-              alias quaerat perferendis, sit quia molestiae quam iure asperiores
-              facilis quis impedit? Sed enim nemo similique. Atque dolorem quo
-              excepturi velit?
-            </p>
-            <h6>De 09:00 a 20:00h</h6>
-            <h6>El precio es de: 5€/día</h6>
-            <div className="d-flex justify-content-between mt-3">
-              <ResponsiveDatePickers />
-              <div>
-                <Button variant="secondary">Reserva</Button>
-              </div>
-            </div>
+      {!loading ? (     
+              <Room rooms ={rooms}/>
+        ) : (
+          <div className=" d-flex justify-content-center align-items-center mb-3">
+            <Spinner />
           </div>
-        </Col>
+        )}
+         
       </Row>
     </Container>
   );

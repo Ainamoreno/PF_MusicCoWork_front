@@ -111,6 +111,11 @@ function BasicExample() {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item
+                  onClick={() => navigate("/profile")}
+                >
+                  Mi perfil
+                </NavDropdown.Item>
+                <NavDropdown.Item
                   onClick={() => navigate("/reservationsrooms")}
                 >
                   Mis reservas

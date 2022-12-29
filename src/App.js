@@ -12,6 +12,7 @@ import ReservationsEvents from './containers/User/ReservationsEvents/Reservation
 import ReservationsRooms from './containers/User/ReservationsRooms/ReservationsRooms';
 import About from './containers/About/About';
 import Login from './containers/Login/Login';
+import Profile from './containers/User/Profile/Profile';
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='/reservationsrooms' element={<ReservationsRooms/>} />
         <Route path='/reservationsevents' element={<ReservationsEvents/>} />
       </Routes>

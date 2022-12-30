@@ -1,8 +1,26 @@
-import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import "./Events.scss";
 import auditorio from "./../../img/auditorio1.jpg";
+import { getEvents } from "../../services/events";
+import Event from "../../components/Event/Event";
+
 function Events() {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getAllRooms();
+  }, []);
+
+  const getAllRooms = () => {
+    setLoading(true);
+    getEvents().then((res) => {
+      setLoading(false);
+      setEvents(res.data.data);
+    });
+  };
+
   return (
     <Container>
       <Row className="mt-5">
@@ -15,23 +33,13 @@ function Events() {
         </Col>
       </Row>
       <Row className="mt-5 d-flex justify-content-center">
-        <Col md={7} className="mb-3">
-          <div className="d-flex justify-content-center flex-column">
-            <h3 className="d-flex justify-content-center titleEvent">
-              Nombre del evento
-            </h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-              alias quaerat perferendis, sit quia molestiae quam iure asperiores
-              facilis quis impedit? Sed enim nemo similique. Atque dolorem quo
-              excepturi velit?
-            </p>
-            <h6>Fecha: 12-10-2023</h6>
+        {!loading ? (
+          <Event events={events} />
+        ) : (
+          <div className=" d-flex justify-content-center align-items-center mb-3">
+            <Spinner />
           </div>
-          <div className="d-flex justify-content-end mt-3">
-              <Button variant="secondary">Confirma asistencia</Button>
-          </div>
-        </Col>
+        )}
       </Row>
       <Row className="d-flex justify-content-center mb-3">
         <img className="w-75" src={auditorio} alt=""></img>

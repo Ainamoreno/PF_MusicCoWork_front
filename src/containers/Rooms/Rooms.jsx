@@ -8,18 +8,16 @@ function Rooms() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
-   getAllRooms()
+    getAllRooms();
   }, []);
 
   const getAllRooms = () => {
     setLoading(true);
-    getRooms().then((res)=> {
-
+    getRooms().then((res) => {
       setLoading(false);
-      setRooms(res.data.data)
-    })
+      setRooms(res.data.data);
+    });
   };
 
   return (
@@ -37,14 +35,13 @@ function Rooms() {
         </Col>
       </Row>
       <Row className="mt-5 d-flex justify-content-center">
-      {!loading ? (     
-              <Room rooms ={rooms}/>
+        {!loading ? (
+          <Room rooms={rooms} />
         ) : (
           <div className=" d-flex justify-content-center align-items-center mb-3">
             <Spinner />
           </div>
         )}
-         
       </Row>
     </Container>
   );

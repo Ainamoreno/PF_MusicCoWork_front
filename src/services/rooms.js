@@ -5,13 +5,13 @@ export const getRooms = async () => {
   return await axios.get(`${route}/api/rooms`);
 };
 
-export const myReservations = async (token) => {
+export const myReservations = async (token, pageNumber = 1) => {
   var config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
-  return await axios.get(`${route}/api/reservations`, config);
+  return await axios.get(`${route}/api/reservations?page=${pageNumber}`, config);
 };
 
 export const reservationRoom = async (token, idRoom, body) => {

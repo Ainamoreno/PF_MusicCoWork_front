@@ -16,6 +16,7 @@ function Room({ rooms }) {
   const resetDate = (date) => {
     setDate({ date: `${date.$d}` });
   };
+
   const makeAReservationRoom = (idRoom) => {
     let allDate = `${date.date}`;
     let dateSplit = allDate.split(" ");
@@ -59,6 +60,7 @@ function Room({ rooms }) {
         break;
       default:
     }
+    
     let dateFinally = `${dateSplit[3]}-${month}-${dateSplit[2]}`;
     setDate({ date: dateFinally });
     reservationRoom(credentials.token, idRoom, {date: dateFinally}).then((res) => {

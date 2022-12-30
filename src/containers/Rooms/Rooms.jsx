@@ -19,7 +19,6 @@ function Rooms() {
 
       setLoading(false);
       setRooms(res.data.data)
-      console.log(rooms)
     })
   };
 

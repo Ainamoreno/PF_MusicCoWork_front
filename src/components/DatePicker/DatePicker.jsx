@@ -7,24 +7,13 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import "./DatePicker.scss";
+//Slice
 
-export default function ResponsiveDatePickers({disabled}) {
-  const [value, setValue] = React.useState(dayjs("2023-02-25"));
-  let day = `${value.$D}`;
-  day.split("");
-  let month = `${value.$M + 1}`;
-  month.split("");
-
-  if (month.length === 1) {
-    month = `0${month}`;
-  }
-  if (day.length === 1) {
-    day = `0${day}`;
-  }
-  let date = `${value.$y}-${month}-${day}`;
-
-  console.log(date);
-
+export default function ResponsiveDatePickers({ disabled, resetDate }) {
+  const [messageError, setMessageError] = React.useState("");
+  const [value, setValue] = React.useState(dayjs(""));
+  console.log(value.$d);
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={"es"}>
       <Stack spacing={3} className="datepicker">
@@ -36,11 +25,15 @@ export default function ResponsiveDatePickers({disabled}) {
           views={["year", "month", "day"]}
           value={value}
           onChange={(newValue) => {
+            // dispatch(reservation({ date: value.$d }));
             setValue(newValue);
+            resetDate(newValue)
+           
           }}
           renderInput={(params) => <TextField {...params} />}
         />
       </Stack>
+      <h6>{messageError}</h6>
     </LocalizationProvider>
   );
 }

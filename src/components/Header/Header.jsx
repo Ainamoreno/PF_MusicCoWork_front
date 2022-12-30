@@ -21,7 +21,6 @@ function BasicExample() {
     dispatch(userout({ credentials: {}, token: "", active: false }));
     return navigate("/");
   };
-  console.log(credentialsUser);
   if (!credentialsUser.active) {
     return (
       <Navbar bg="light" expand="lg" className="navbar">

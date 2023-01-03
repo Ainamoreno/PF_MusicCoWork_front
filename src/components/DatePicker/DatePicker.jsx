@@ -12,7 +12,6 @@ import "./DatePicker.scss";
 export default function ResponsiveDatePickers({ disabled, resetDate }) {
   const [messageError, setMessageError] = React.useState("");
   const [value, setValue] = React.useState(dayjs(""));
-  console.log(value.$d);
   
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={"es"}>

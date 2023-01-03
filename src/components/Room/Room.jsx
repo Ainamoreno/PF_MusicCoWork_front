@@ -65,10 +65,7 @@ function Room({ rooms }) {
     setDate({ date: dateFinally });
     reservationRoom(credentials.token, idRoom, {date: dateFinally}).then((res) => {
       setMessageError("");
-      if (
-        res.data.message ===
-        "Lo sentimos, ya tenemos reservada el aula para este día"
-      ) {
+      if (res.data.message === "Lo sentimos, ya tenemos reservada el aula para este día") {
         setMessageError(
           "Lo sentimos, ya tenemos reservada el aula para este día"
         );

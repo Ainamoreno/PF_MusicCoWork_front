@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import "./Events.scss";
 import auditorio from "./../../img/auditorio1.jpg";
 import { getEvents } from "../../services/events";
@@ -32,7 +32,7 @@ function Events() {
           </div>
         </Col>
       </Row>
-      <Row className="mt-5 d-flex justify-content-center">
+      <Row className="mt-5 d-flex justify-content-center colEvent">
         {!loading ? (
           <Event events={events} />
         ) : (

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -13,6 +13,7 @@ import ReservationsRooms from './containers/User/ReservationsRooms/ReservationsR
 import About from './containers/About/About';
 import Login from './containers/Login/Login';
 import Profile from './containers/User/Profile/Profile';
+import Admin from './containers/Admin/Admin';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/about' element={<About/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<Profile/>} />
+        <Route path='/admin' element={<Admin/>} />
         <Route path='/reservationsrooms' element={<ReservationsRooms/>} />
         <Route path='/reservationsevents' element={<ReservationsEvents/>} />
       </Routes>

@@ -12,7 +12,7 @@ import { errorCheck } from "./../../services/usefull";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const [messageError, setMessageError] = useState('')
+  const [messageError, setMessageError] = useState("");
   const [user, setUser] = useState({
     name: "",
     surname: "",
@@ -49,23 +49,21 @@ function Register() {
   const register = () => {
     for (let value of content) {
       if (value === "") {
-        setMessageError('Debes rellenar todos los datos');
+        setMessageError("Debes rellenar todos los datos");
       } else {
-
         registerUser(user).then((res) => {
-
-          if(res.data.message ==="Este email ya había sido utilizado."){
-            setMessageError('El email ya ha sido registrado')
+          if (res.data.message === "Este email ya había sido utilizado.") {
+            setMessageError("El email ya ha sido registrado");
           }
-          if(res.data.message === 'OK'){
-            setMessageError('')
+          if (res.data.message === "OK") {
+            setMessageError("");
             navigate("/login");
           }
         });
       }
     }
   };
-  
+
   return (
     <Container fluid className="containerRegister">
       <Row className="pt-5">
@@ -102,7 +100,9 @@ function Register() {
           <Container>
             <Row>
               <Col>
-                <div className="errorInput d-flex justify-content-center mb-2">{userError.nameError}</div>
+                <div className="errorInput d-flex justify-content-center mb-2">
+                  {userError.nameError}
+                </div>
               </Col>
             </Row>
           </Container>
@@ -125,7 +125,9 @@ function Register() {
           <Container>
             <Row>
               <Col>
-                <div className="errorInput d-flex justify-content-center mb-2">{userError.surnameError}</div>
+                <div className="errorInput d-flex justify-content-center mb-2">
+                  {userError.surnameError}
+                </div>
               </Col>
             </Row>
           </Container>
@@ -146,7 +148,9 @@ function Register() {
           <Container>
             <Row>
               <Col>
-                <div className="errorInput d-flex justify-content-center mb-2">{userError.emailError}</div>
+                <div className="errorInput d-flex justify-content-center mb-2">
+                  {userError.emailError}
+                </div>
               </Col>
             </Row>
           </Container>
@@ -166,23 +170,26 @@ function Register() {
               onChange={(e) => handler(e)}
             />
           </InputGroup>
-         
-            <Row className=" d-flex justify-content-center mb-2">
-              <Col className=" d-flex justify-content-center mb-2">
-                <div className="errorInput d-flex justify-content-center mb-2">{userError.passwordError}</div>
-              </Col>
-            </Row>
-          
+
+          <Row className=" d-flex justify-content-center mb-2">
+            <Col className=" d-flex justify-content-center mb-2">
+              <div className="errorInput d-flex justify-content-center mb-2">
+                {userError.passwordError}
+              </div>
+            </Col>
+          </Row>
         </Col>
       </Row>
       <Row>
         <Col className=" mt-3 mb-3 d-flex justify-content-center">
-          <Button variant="secondary" onClick={() => register()}>Regístrate</Button>
+          <Button variant="secondary" onClick={() => register()}>
+            Regístrate
+          </Button>
         </Col>
       </Row>
       <Row>
         <Col className=" mt-3 mb-3 d-flex justify-content-center">
-         {messageError}
+          {messageError}
         </Col>
       </Row>
     </Container>

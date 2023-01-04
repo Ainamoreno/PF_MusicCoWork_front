@@ -16,7 +16,7 @@ function BasicExample() {
   const navigate = useNavigate();
   const credentialsUser = useSelector(userData);
   const dispatch = useDispatch();
-
+console.log(credentialsUser.credentials.role_id)
   const logout = () => {
     dispatch(userout({ credentials: {}, token: "", active: false }));
     return navigate("/");
@@ -109,9 +109,7 @@ function BasicExample() {
                 title={credentialsUser.credentials.name}
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item
-                  onClick={() => navigate("/profile")}
-                >
+                <NavDropdown.Item onClick={() => navigate("/profile")}>
                   Mi perfil
                 </NavDropdown.Item>
                 <NavDropdown.Item
@@ -125,8 +123,22 @@ function BasicExample() {
                   Mis asistencias a eventos
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={() => logout()}>Cerrar sesión</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => logout()}>
+                  Cerrar sesión
+                </NavDropdown.Item>
               </NavDropdown>
+              {credentialsUser.credentials.role_id  === 2 ? (
+                <Nav.Link>
+                <div
+                  className="headersName"
+                  onClick={() => navigate("/admin")}
+                >
+                  Administrador
+                </div>
+              </Nav.Link>
+              ) : (
+                <></>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

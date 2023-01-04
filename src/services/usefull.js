@@ -1,10 +1,26 @@
 export const errorCheck = (value, type, password1) => {
   switch (type) {
+    case "price":
+      if (!value.match(/[0-9]/)) {
+        return "Formato incorrecto";
+      } else if (value.length < 1) {
+        return "Añade el precio";
+      } else {
+        return "";
+      }
+    case "description":
+      if (!/[a-z]/gi.test(value)) {
+        return "Formato incorrecto";
+      } else if (value.length > 75) {
+        return "La descripción podrá tener máximo 75 carácteres";
+      } else {
+        return "";
+      }
     case "text":
       if (!/[a-z]/gi.test(value)) {
         return "Formato incorrecto";
-      }else if (value.length > 25) {
-        return "El apellido debe ser máximo de 25 carácteres"
+      } else if (value.length > 25) {
+        return "Debe ser máximo de 25 carácteres";
       } else {
         return "";
       }
@@ -15,7 +31,7 @@ export const errorCheck = (value, type, password1) => {
       } else if (!/[a-z]/gi.test(value)) {
         return "Formato incorrecto";
       } else if (value.length > 15) {
-        return "El nombre debe ser máximo de 15 carácteres"
+        return "El nombre debe ser máximo de 15 carácteres";
       } else {
         return "";
       }

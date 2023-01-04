@@ -104,7 +104,7 @@ function Login() {
         </Col>
       </Row>
       <Row>
-        <Col className=" mt-3 d-flex justify-content-center">
+        <Col className=" mt-3 mb-3 d-flex justify-content-center">
           <Button variant="secondary" onClick={() => logMe()}>
             Iniciar sesión
           </Button>

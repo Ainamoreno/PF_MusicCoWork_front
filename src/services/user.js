@@ -26,3 +26,7 @@ export const reservations = async (body, token) => {
   };
   return await axios.get(`${route}/api/reservations`, body, config);
 };
+
+export const registerUser = async (body) => {
+  return await axios.post(`${route}/api/register`, body);
+};

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { myReservations } from "./../../../services/rooms";
+import { myReservations, deleteReservationRoom } from "./../../../services/rooms";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import Pagination from "react-js-pagination";
-import './ReservationsRooms.scss';
+import "./ReservationsRooms.scss";
+
 
 function ReservationsRooms() {
   const credentialsUser = useSelector(userData);
   const [reservations, setReservations] = useState([]);
   const [pagination, setPagination] = useState({});
-  const [pageNumber, setPageNumber] = useState(0);
   const [loading, setLoading] = useState(false);
   const { current_page, per_page, total } = pagination;
 
   useEffect(() => {
-    showReservations(pageNumber);
+    showReservations();
   }, []);
 
   const showReservations = (pageNumber) => {
@@ -26,6 +26,16 @@ function ReservationsRooms() {
       setPagination(res.data.date);
     });
   };
+
+  const cancelRservation = (idReservation) => {
+    deleteReservationRoom(credentialsUser.token, idReservation).then((res)=> {
+      if(res.data.message === "Se ha cancelado la reserva correctamente."){
+        showReservations();
+      }
+    })
+  }
+
+  
 
   if (reservations.length === 0) {
     return (
@@ -60,14 +70,28 @@ function ReservationsRooms() {
               <Row key={index} className="rowReservationDesign mb-3">
                 <Col className="mt-2 mb-3">
                   <h4 className=" d-flex justify-content-center">
-                    SALA RESERVADA: 
+                    SALA RESERVADA:
                   </h4>
                   <h5 className=" d-flex justify-content-center">
-                  {reserv.name}
+                    {reserv.name}
                   </h5>
                   <h6 className=" d-flex justify-content-center">
                     Fecha de la reserva: {reserv.date}
                   </h6>
+                </Col>
+                <Col
+                  md={6}
+                  xs={12}
+                  className="mb-4 d-flex justify-content-center align-items-center"
+                >
+                  <div>
+                    <Button
+                      variant="secondary"
+                      onClick={() => cancelRservation(reserv.id)}
+                    >
+                      Cancelar reserva
+                    </Button>
+                  </div>
                 </Col>
               </Row>
             </div>
@@ -83,8 +107,8 @@ function ReservationsRooms() {
               activePage={current_page}
               totalItemsCount={total}
               itemsCountPerPage={per_page}
-              onChange={(current_page) => setPageNumber(current_page)}
-              itemClass = "page-item"
+              onChange={(current_page) =>showReservations(current_page)}
+              itemClass="page-item"
               linkClass="page-link"
             />
           </Col>

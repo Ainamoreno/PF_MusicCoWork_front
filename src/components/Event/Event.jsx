@@ -16,8 +16,6 @@ function Event({ events }) {
   const makeAReservationEvent = (idEvent) => {
     reservationEvent(credentialsUser.token, idEvent).then((res) => {
       setClassButton("");
-      console.log(credentialsUser.token);
-      console.log(res.data.message);
       setMessageError("");
       if (res.data.message === "Ya está reservado.") {
         setShow(true);

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { myReservationsEvents } from "./../../../services/events";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
+import Pagination from "react-js-pagination";
 
 function ReservationsEvents() {
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [pagination, setPagination] = useState({});
+  const { current_page, per_page, total } = pagination;
+
   const credentialsUser = useSelector(userData);
   useEffect(() => {
     showReservations();
@@ -16,7 +20,8 @@ function ReservationsEvents() {
     setLoading(true);
     myReservationsEvents(credentialsUser.token, pageNumber).then((res) => {
       setLoading(false);
-      setReservations(res.data.data);
+      setReservations(res.data.data.data);
+      setPagination(res.data.data);
     });
   };
   if (reservations.length === 0) {
@@ -44,7 +49,7 @@ function ReservationsEvents() {
     return (
       <Container>
         <h3 className="mt-5 d-flex justify-content-center titleReservations">
-        Asistencias a actos reservadas:
+          Asistencias a actos reservadas:
         </h3>
         {!loading ? (
           reservations.map((reserv, index) => (
@@ -52,10 +57,10 @@ function ReservationsEvents() {
               <Row key={index} className="rowReservationDesign mb-3">
                 <Col className="mt-2 mb-3">
                   <h4 className=" d-flex justify-content-center">
-                    ACTO RESERVADO: 
+                    ACTO RESERVADO:
                   </h4>
                   <h5 className=" d-flex justify-content-center">
-                  {reserv.name}
+                    {reserv.name}
                   </h5>
                   <h6 className=" d-flex justify-content-center">
                     Fecha del acto: {reserv.date}
@@ -71,13 +76,19 @@ function ReservationsEvents() {
         )}
         <Row>
           <Col>
-            
+            <Pagination
+              activePage={current_page}
+              totalItemsCount={total}
+              itemsCountPerPage={per_page}
+              onChange={(current_page) => showReservations(current_page)}
+              itemClass="page-item"
+              linkClass="page-link"
+            />
           </Col>
         </Row>
       </Container>
     );
   }
-
 }
 
-export default ReservationsEvents
+export default ReservationsEvents;

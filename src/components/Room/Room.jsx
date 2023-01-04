@@ -94,7 +94,7 @@ function Room({ rooms }) {
                 xs={12}
                 className="d-flex justify-content-between mt-3 mb-2 "
               >
-                <ResponsiveDatePickers disabled={"disabled"} />
+                <ResponsiveDatePickers disabled={true} />
               </Col>
               <Col md={6} xs={12} className="mb-4 ">
                 <div>

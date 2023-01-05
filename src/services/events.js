@@ -1,5 +1,5 @@
 import axios from "axios";
-const route = "http://localhost:8000";
+const route = "https://pfmusiccoworkback-production.up.railway.app";
 
 export const getEvents = async () => {
   return await axios.get(`${route}/api/allevents`);

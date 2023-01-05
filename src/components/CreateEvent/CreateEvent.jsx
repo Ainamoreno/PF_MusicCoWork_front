@@ -20,9 +20,8 @@ function CreateEvent() {
   const [event, setEvent] = useState({
     name: "",
     description: "",
-    date: date,
+    date: "",
   });
-
 
   const [userError, setUserError] = useState({
     nameError: "",
@@ -48,8 +47,10 @@ function CreateEvent() {
     setDate(`${date.$d}`);
   };
   const createAEvent = () => {
-    let allDate = `${date.date}`;
+    let allDate = `${date}`;
+    console.log(date);
     let dateSplit = allDate.split(" ");
+    console.log(dateSplit);
     let month = dateSplit[1];
     switch (month) {
       case "Jan":
@@ -90,12 +91,20 @@ function CreateEvent() {
         break;
       default:
     }
-    
+
     let dateFinally = `${dateSplit[3]}-${month}-${dateSplit[2]}`;
-    setDate(dateFinally);
-    createEvent(event, credentialsUser.token).then((res) => {
-      if (res.data.message === "Se ha creado la sala correctamente.") {
-        navigate("/rooms");
+    setDate(`${dateFinally}`);
+    let eventWithDate = {
+      ...event,
+      date: dateFinally,
+    };
+    console.log(eventWithDate);
+    console.log(date);
+    setEvent({ ...event, date: dateFinally });
+    console.log(event);
+    createEvent(eventWithDate, credentialsUser.token).then((res) => {
+      if (res.data.message === "Se ha creado el evento correctamente.") {
+        navigate("/events");
       }
       console.log(res.data);
     });
@@ -153,7 +162,7 @@ function CreateEvent() {
                   </Container>
                   <InputGroup className="mb-3 ">
                     <InputGroup.Text id="basic-addon1">
-                      <MdDriveFileRenameOutline resetDate={resetDate} />
+                      <MdDriveFileRenameOutline />
                     </InputGroup.Text>
                     <Form.Control
                       name="description"
@@ -180,7 +189,7 @@ function CreateEvent() {
                       </Col>
                     </Row>
                   </Container>
-                  <ResponsiveDatePickers />
+                  <ResponsiveDatePickers resetDate={resetDate} />
                   <Container>
                     <Row>
                       <Col>
@@ -195,7 +204,9 @@ function CreateEvent() {
             </div>
             <Row>
               <Col className=" mt-3 mb-3 d-flex justify-content-center">
-                <Button variant="secondary">Añadir sala</Button>
+                <Button variant="secondary" onClick={() => createAEvent()}>
+                  Añadir sala
+                </Button>
               </Col>
             </Row>
           </Col>

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { reservationEvent } from "./../../services/events";
 import AutohideExample from "../Toast/Toast";
 import "./Event.scss";
+import { deleteEvent } from "./../../services/admin";
+
 function Event({ events }) {
   const credentialsUser = useSelector(userData);
   const navigate = useNavigate();
@@ -27,6 +29,13 @@ function Event({ events }) {
     // navigate('/reservationsevents')
   };
 
+  const deleteAEvent = (idEvent) => {
+    deleteEvent(credentialsUser.token, idEvent).then((res) => {
+      if (res.data.message === "Se ha eliminado el evento correctamente.") {
+        navigate("/");
+      }
+    });
+  };
   if (!credentialsUser.active) {
     return (
       <Col md={7} className="mb-3">
@@ -92,8 +101,20 @@ function Event({ events }) {
                   >
                    <a href="#toastEv">Reserva</a> 
                   </Button>
+                  <div>{messageError}</div>
                 </div>
-                <div>{messageError}</div>
+                
+                {credentialsUser.credentials.role_id === 2 ? (
+                  <Button
+                    variant="secondary"
+                    className="headersName mt-2"
+                    onClick={() => deleteAEvent(event.id)}
+                  >
+                    Eliminar evento
+                  </Button>
+                ) : (
+                  <></>
+                )}
               </Col>
             </Row>
           </div>

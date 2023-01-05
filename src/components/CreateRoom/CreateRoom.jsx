@@ -45,6 +45,7 @@ function CreateRoom() {
     }));
   };
   const createARoom = () => {
+    console.log(room)
     createRoom(room, credentialsUser.token).then((res) => {
       if (res.data.message === "Se ha creado la sala correctamente.") {
         navigate("/rooms");
@@ -80,7 +81,7 @@ function CreateRoom() {
                       <BiRename />
                     </InputGroup.Text>
                     <Form.Control
-                      name="text"
+                      name="name"
                       type="text"
                       placeholder="Nombre de la sala"
                       aria-label="name"

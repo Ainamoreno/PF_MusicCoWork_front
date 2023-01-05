@@ -6,12 +6,13 @@ import { userData } from "../../containers/User/userSlice";
 import { useNavigate } from "react-router-dom";
 //Services
 import { reservationRoom } from "./../../services/rooms";
+import { deleteRoom } from "./../../services/admin";
 
 function Room({ rooms }) {
   const [date, setDate] = useState({ date: " " });
   const [messageError, setMessageError] = useState("");
   const navigate = useNavigate();
-  const credentials = useSelector(userData);
+  const credentialsUser = useSelector(userData);
 
   const resetDate = (date) => {
     setDate({ date: `${date.$d}` });
@@ -60,19 +61,32 @@ function Room({ rooms }) {
         break;
       default:
     }
-    
+
     let dateFinally = `${dateSplit[3]}-${month}-${dateSplit[2]}`;
     setDate({ date: dateFinally });
-    reservationRoom(credentials.token, idRoom, {date: dateFinally}).then((res) => {
-      setMessageError("");
-      if (res.data.message === "Lo sentimos, ya tenemos reservada el aula para este día") {
-        setMessageError(
+    reservationRoom(credentialsUser.token, idRoom, { date: dateFinally }).then(
+      (res) => {
+        setMessageError("");
+        navigate("/reservationsrooms");
+        if (
+          res.data.message ===
           "Lo sentimos, ya tenemos reservada el aula para este día"
-        );
+        ) {
+          setMessageError(
+            "Lo sentimos, ya tenemos reservada el aula para este día"
+          );
+        }
+      }
+    );
+  };
+
+  const deleteARoom = (idRoom) => {
+    deleteRoom(credentialsUser.token, idRoom).then((res) => {
+      if (res.data.message === "Se ha eliminado la sala correctamente.") {
+        navigate("/");
       }
     });
   };
-  const credentialsUser = useSelector(userData);
 
   if (!credentialsUser.active) {
     return (
@@ -143,6 +157,17 @@ function Room({ rooms }) {
                   </Button>
                   <h6>{messageError}</h6>
                 </div>
+                {credentialsUser.credentials.role_id === 2 ? (
+                  <Button
+                    variant="secondary"
+                    className="headersName"
+                    onClick={() => deleteARoom(room.id)}
+                  >
+                    Eliminar sala
+                  </Button>
+                ) : (
+                  <></>
+                )}
               </Col>
             </Row>
           </div>

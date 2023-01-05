@@ -66,8 +66,8 @@ function ReservationsRooms() {
         </h3>
         {!loading ? (
           reservations.map((reserv, index) => (
-            <div>
-              <Row key={index} className="rowReservationDesign mb-3">
+            <div key={index}>
+              <Row  className="rowReservationDesign mb-3">
                 <Col className="mt-2 mb-3">
                   <h4 className=" d-flex justify-content-center">
                     SALA RESERVADA:

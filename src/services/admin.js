@@ -36,3 +36,13 @@ export const createRoom = async (body, token) => {
     };
     return await axios.get(`${route}/api/deleteevent/${idEvent}`, config);
   };
+
+  export const getAllUsers = async (token) => {
+    var config = {
+      headers: { 
+        'Authorization': 'Bearer '+ token,  
+      }
+    };
+    return await axios.get(`${route}/api/getallusers`, config);
+  };
+  

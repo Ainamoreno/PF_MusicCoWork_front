@@ -10,7 +10,8 @@ import { BiRename } from "react-icons/bi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { IoIosPricetags } from "react-icons/io";
 import Collapse from 'react-bootstrap/Collapse';
-import './CreateRoom.scss'
+import './CreateRoom.scss';
+
 function CreateRoom() {
   const credentialsUser = useSelector(userData);
   const navigate = useNavigate();
@@ -23,12 +24,14 @@ function CreateRoom() {
     price: "",
     horary: "",
   });
+
   const [userError, setUserError] = useState({
     nameError: "",
     descriptionError: "",
     priceError: "",
     horaryError: "",
   });
+  
   const handler = (e) => {
     setRoom((objUser) => ({
       ...objUser,

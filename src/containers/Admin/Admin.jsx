@@ -1,42 +1,31 @@
-import React, { useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
-import { errorCheck } from "../../services/usefull";
-import { createRoom } from "./../../services/admin";
-import { AiTwotoneCalendar } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
-import { MdDriveFileRenameOutline } from "react-icons/md";
-import { IoIosPricetags } from "react-icons/io";
+import React from "react";
+import {  Col, Container,Row } from "react-bootstrap";
 
-import { useSelector } from "react-redux";
-import { userData } from "./../../containers/User/userSlice";
-import { useNavigate } from "react-router-dom";
 
-import Collapse from "react-bootstrap/Collapse";
 import CreateRoom from "../../components/CreateRoom/CreateRoom";
 import CreateEvent from "../../components/CreateEvent/CreateEvent";
+import AllUsers from "../../components/AllUsers/AllUsers";
 function Admin() {
-  //   const handler = (e) => {
-  //     setRoom((objUser) => ({
-  //       ...objUser,
-  //       [e.target.name]: e.target.value,
-  //     }));
-  //   };
 
-  //   const errorHandler = (field, value, type) => {
-  //     let error = "";
-  //     error = errorCheck(value, type);
-  //     setUserError((prevState) => ({
-  //       ...prevState,
-  //       [field + "Error"]: error,
-  //     }));
-  //   };
 
   return (
     <Container>
+
+<Row className="mt-5 d-flex justify-content-center align-items-center">
+            <Col xs={12} md={6} className=" mt-3 d-flex justify-content-center">
+              <div className=" d-flex justify-content-center align-items-center">
+                <h4 className=" d-flex justify-content-center align-items-center titleConatinerRooms text-focus-in">
+                  Espacio del administrador
+                </h4>
+              </div>
+            </Col>
+          </Row>
+
       <Row>
         <Col>
           <CreateRoom/>
           <CreateEvent />
+          <AllUsers/>
         </Col>
       </Row>
     </Container>

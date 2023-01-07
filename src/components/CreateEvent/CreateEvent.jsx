@@ -5,10 +5,8 @@ import { errorCheck } from "../../services/usefull";
 import { userData } from "./../../containers/User/userSlice";
 import { useNavigate } from "react-router-dom";
 import { Button, Col, Container, InputGroup, Row, Form } from "react-bootstrap";
-import { AiTwotoneCalendar } from "react-icons/ai";
 import { BiRename } from "react-icons/bi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
-import { IoIosPricetags } from "react-icons/io";
 import Collapse from "react-bootstrap/Collapse";
 import ResponsiveDatePickers from "../DatePicker/DatePicker";
 
@@ -48,9 +46,7 @@ function CreateEvent() {
   };
   const createAEvent = () => {
     let allDate = `${date}`;
-    console.log(date);
     let dateSplit = allDate.split(" ");
-    console.log(dateSplit);
     let month = dateSplit[1];
     switch (month) {
       case "Jan":
@@ -98,15 +94,11 @@ function CreateEvent() {
       ...event,
       date: dateFinally,
     };
-    console.log(eventWithDate);
-    console.log(date);
     setEvent({ ...event, date: dateFinally });
-    console.log(event);
     createEvent(eventWithDate, credentialsUser.token).then((res) => {
       if (res.data.message === "Se ha creado el evento correctamente.") {
         navigate("/events");
       }
-      console.log(res.data);
     });
   };
   return (

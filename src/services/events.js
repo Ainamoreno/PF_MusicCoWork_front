@@ -5,13 +5,13 @@ export const getEvents = async () => {
   return await axios.get(`${route}/api/allevents`);
 };
 
-export const myReservationsEvents= async (token) => {
+export const myReservationsEvents= async (token, pageNumber) => {
   var config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
-  return await axios.get(`${route}/api/events`, config);
+  return await axios.get(`${route}/api/events?page=${pageNumber}`, config);
 };
 
 export const reservationEvent = async (token, idEvent) => {

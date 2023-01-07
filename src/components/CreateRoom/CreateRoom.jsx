@@ -48,12 +48,10 @@ function CreateRoom() {
     }));
   };
   const createARoom = () => {
-    console.log(room)
     createRoom(room, credentialsUser.token).then((res) => {
       if (res.data.message === "Se ha creado la sala correctamente.") {
         navigate("/rooms");
       }
-      console.log(res.data);
     });
   };
 

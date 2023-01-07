@@ -2,47 +2,38 @@ import React, { useState } from "react";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { userData } from "./../../containers/User/userSlice";
-import { getAllUsers } from "./../../services/admin";
-import { deleteUser } from "./../../services/admin";
+import { getAllReservationsRooms } from "./../../services/admin";
 import Collapse from "react-bootstrap/Collapse";
 import Pagination from "react-js-pagination";
-import "./AllUsers.scss";
 
-function AllUsers() {
-  const credentialsUser = useSelector(userData);
+function AllReservationsRooms() {
 
-  const [openOne, setOpenOne] = useState(false);
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [pagination, setPagination] = useState({});
-  const { current_page, per_page, total } = pagination;
+    const credentialsUser = useSelector(userData);
 
-  const getUsers = (isOpen, pageNumber) => {
-    setOpenOne(isOpen);
-    setLoading(true);
-    getAllUsers(credentialsUser.token, pageNumber).then((res) => {
-      setLoading(false);
-      setUsers(res.data.data.data);
-      setPagination(res.data.data);
-    });
-  };
+    const [openOne, setOpenOne] = useState(false);
+    const [allReservationsRooms, setAllReservationsRooms] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [pagination, setPagination] = useState({});
 
-  const deleteAUser = (idUser) => {
-    deleteUser(credentialsUser.token, idUser).then((res) => {
-      if(res.data.message === "Se ha eliminado el ususario correctamente."){
-        getUsers(openOne, current_page)
-      }
-    });
-  };
+    const { current_page, per_page, total } = pagination;
+    const getReservationsRooms = (isOpen, pageNumber) => {
+        setOpenOne(isOpen);
+        setLoading(true);
+        getAllReservationsRooms(credentialsUser.token, pageNumber).then((res) => {
+          setLoading(false);
+          setAllReservationsRooms(res.data.data.data);
+          setPagination(res.data.data);
+        });
+      };
   return (
     <>
       <Button
         className="mt-3 d-flex buttonCollapse"
-        onClick={() => getUsers(!openOne)}
+        onClick={() => getReservationsRooms(!openOne)}
         aria-controls="example-collapse-text"
         aria-expanded={openOne}
       >
-        Mostrar todos los usuarios
+        Mostrar todas las reservas de salas
       </Button>
       <Collapse in={openOne}>
         <Container>
@@ -50,7 +41,7 @@ function AllUsers() {
             <Col xs={12} md={6} className=" mt-3 d-flex justify-content-center">
               <div className=" d-flex justify-content-center align-items-center">
                 <h5 className=" d-flex justify-content-center align-items-center titleConatinerRooms">
-                  Todos los usuarios registrados
+                  Salas reservadas
                 </h5>
               </div>
             </Col>
@@ -59,24 +50,18 @@ function AllUsers() {
             {!loading ? (
               <Container>
                 <Row>
-                  {users.map((user, index) => (
+                  {allReservationsRooms.map((user, index) => (
                     <Col
                       key={index}
                       className=" d-flex justify-content-center align-items-center mb-5"
                     >
                       <div className="cardUser me-3">
                         <h5>
-                          Nombre: <strong>{user.name}</strong>
+                          Reserva realizada por: <strong>{user.name_user}</strong>
                         </h5>
-                        <h6>Apellidos: {user.surname}</h6>
-                        <p>E-mail: {user.email}</p>
+                        <h6>Sala reservada: {user.name_room}</h6>
+                        <p>Fecha: {user.date}</p>
                       </div>
-                      <Button
-                        variant="secondary"
-                        onClick={() => deleteAUser(user.id)}
-                      >
-                        Eliminar usuario
-                      </Button>
                     </Col>
                   ))}
                 </Row>
@@ -84,7 +69,7 @@ function AllUsers() {
                   activePage={current_page}
                   totalItemsCount={total}
                   itemsCountPerPage={per_page}
-                  onChange={(current_page) => getUsers(openOne, current_page)}
+                  onChange={(current_page) => getReservationsRooms(openOne, current_page)}
                   itemClass="page-item"
                   linkClass="page-link"
                 />
@@ -98,7 +83,7 @@ function AllUsers() {
         </Container>
       </Collapse>
     </>
-  );
+  )
 }
 
-export default AllUsers;
+export default AllReservationsRooms

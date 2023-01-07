@@ -16,7 +16,6 @@ function BasicExample() {
   const navigate = useNavigate();
   const credentialsUser = useSelector(userData);
   const dispatch = useDispatch();
-console.log(credentialsUser.credentials.role_id)
   const logout = () => {
     dispatch(userout({ credentials: {}, token: "", active: false }));
     return navigate("/");

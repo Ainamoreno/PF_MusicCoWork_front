@@ -5,6 +5,7 @@ import {  Col, Container,Row } from "react-bootstrap";
 import CreateRoom from "../../components/CreateRoom/CreateRoom";
 import CreateEvent from "../../components/CreateEvent/CreateEvent";
 import AllUsers from "../../components/AllUsers/AllUsers";
+import AllReservationsRooms from "../../components/AllReservationsRooms/AllReservationsRooms";
 function Admin() {
 
 
@@ -26,6 +27,7 @@ function Admin() {
           <CreateRoom/>
           <CreateEvent />
           <AllUsers/>
+          <AllReservationsRooms/>
         </Col>
       </Row>
     </Container>

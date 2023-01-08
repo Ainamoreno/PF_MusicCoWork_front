@@ -14,6 +14,7 @@ import About from './containers/About/About';
 import Login from './containers/Login/Login';
 import Profile from './containers/User/Profile/Profile';
 import Admin from './containers/Admin/Admin';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/reservationsrooms' element={<ReservationsRooms/>} />
         <Route path='/reservationsevents' element={<ReservationsEvents/>} />
       </Routes>
+     <Footer/> 
     </BrowserRouter>
 
   );

@@ -102,7 +102,7 @@ function ReservationsRooms() {
           </div>
         )}
         <Row>
-          <Col>
+          <Col className="d-flex justify-content-center">
             <Pagination
               activePage={current_page}
               totalItemsCount={total}

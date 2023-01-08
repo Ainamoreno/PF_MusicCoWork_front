@@ -65,7 +65,9 @@ function AllReservationsRooms() {
                     </Col>
                   ))}
                 </Row>
-                <Pagination
+                <Row>
+                  <Col className="d-flex justify-content-center">
+                  <Pagination
                   activePage={current_page}
                   totalItemsCount={total}
                   itemsCountPerPage={per_page}
@@ -73,6 +75,9 @@ function AllReservationsRooms() {
                   itemClass="page-item"
                   linkClass="page-link"
                 />
+                  </Col>
+                </Row>
+                
               </Container>
             ) : (
               <div className=" d-flex justify-content-center align-items-center mb-3">

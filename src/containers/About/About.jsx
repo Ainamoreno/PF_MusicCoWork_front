@@ -24,7 +24,7 @@ function About() {
         </Col>
       </Row>
       <Row className="pb-4">
-        <Col>
+        <Col className="d-flex justify-content-center">
         <UncontrolledExample/>
         </Col>
       </Row>

@@ -26,7 +26,7 @@ function Event({ events }) {
         navigate('/reservationsevents')
       }
     });
-    // navigate('/reservationsevents')
+
   };
 
   const deleteAEvent = (idEvent) => {
@@ -91,7 +91,7 @@ function Event({ events }) {
                 xs={12}
                 className="d-flex justify-content-between mt-3 mb-2 colEvent"
               ></Col>
-              <Col md={6} xs={12} className="mb-4 ">
+              <Col xs={12} className="d-flex mb-4">
                 <div>
                   <Button
                   
@@ -106,8 +106,8 @@ function Event({ events }) {
                 
                 {credentialsUser.credentials.role_id === 2 ? (
                   <Button
-                    variant="secondary"
-                    className="headersName mt-2"
+                    variant="danger"
+                    className="ms-2"
                     onClick={() => deleteAEvent(event.id)}
                   >
                     Eliminar evento

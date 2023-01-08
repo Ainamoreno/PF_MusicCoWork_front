@@ -106,11 +106,11 @@ function Room({ rooms }) {
               <Col
                 md={6}
                 xs={12}
-                className="d-flex justify-content-between mt-3 mb-2 "
+                className="d-flex justify-content-between mt-3 "
               >
                 <ResponsiveDatePickers disabled={true} />
               </Col>
-              <Col md={6} xs={12} className="mb-4 ">
+              <Col md={6} xs={12} className="d-flex align-items-end mt-3 mt-md-0">
                 <div>
                   <Button
                     variant="secondary"
@@ -139,15 +139,15 @@ function Room({ rooms }) {
             <p>{room.description}</p>
             <h6>{room.horary}</h6>
             <h6>El precio es de: {room.price}€/día</h6>
-            <Row>
+            <Row className="mb-5">
               <Col
-                md={6}
+                sm={6}
                 xs={12}
-                className="d-flex justify-content-between mt-3 mb-2 "
+                className="d-flex align-items-end mt-3"
               >
                 <ResponsiveDatePickers resetDate={resetDate} />
               </Col>
-              <Col md={6} xs={12} className="mb-4 ">
+              <Col sm={6} xs={12} className="d-flex flex-column justify-content-end mt-2 mt-sm-0">
                 <div>
                   <Button
                     variant="secondary"
@@ -156,11 +156,10 @@ function Room({ rooms }) {
                     Reserva
                   </Button>
                   <h6>{messageError}</h6>
-                </div>
+                
                 {credentialsUser.credentials.role_id === 2 ? (
                   <Button
-                    variant="secondary"
-                    className="headersName"
+                    variant="danger"
                     onClick={() => deleteARoom(room.id)}
                   >
                     Eliminar sala
@@ -168,8 +167,11 @@ function Room({ rooms }) {
                 ) : (
                   <></>
                 )}
+                </div>
               </Col>
+              <hr className="mt-3"/>
             </Row>
+           
           </div>
         ))}
       </Col>

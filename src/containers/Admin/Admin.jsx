@@ -6,6 +6,7 @@ import CreateRoom from "../../components/CreateRoom/CreateRoom";
 import CreateEvent from "../../components/CreateEvent/CreateEvent";
 import AllUsers from "../../components/AllUsers/AllUsers";
 import AllReservationsRooms from "../../components/AllReservationsRooms/AllReservationsRooms";
+import AllReservationsEvents from "../../components/AllReservationsEvents/AllReservationsEvents";
 function Admin() {
 
 
@@ -28,6 +29,7 @@ function Admin() {
           <CreateEvent />
           <AllUsers/>
           <AllReservationsRooms/>
+          <AllReservationsEvents/>
         </Col>
       </Row>
     </Container>

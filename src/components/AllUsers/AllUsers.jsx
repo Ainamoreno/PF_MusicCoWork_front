@@ -70,17 +70,24 @@ function AllUsers() {
                         </h5>
                         <h6>Apellidos: {user.surname}</h6>
                         <p>E-mail: {user.email}</p>
-                      </div>
-                      <Button
-                        variant="secondary"
+                        <div className="d-flex justify-content-center">
+                           <Button
+                        
+                        variant="danger"
                         onClick={() => deleteAUser(user.id)}
                       >
                         Eliminar usuario
                       </Button>
+                        </div>
+                       
+                      </div>
+                      
                     </Col>
                   ))}
                 </Row>
-                <Pagination
+                <Row>
+                  <Col className="d-flex justify-content-center">
+                  <Pagination
                   activePage={current_page}
                   totalItemsCount={total}
                   itemsCountPerPage={per_page}
@@ -88,6 +95,9 @@ function AllUsers() {
                   itemClass="page-item"
                   linkClass="page-link"
                 />
+                  </Col>
+                </Row>
+                
               </Container>
             ) : (
               <div className=" d-flex justify-content-center align-items-center mb-3">

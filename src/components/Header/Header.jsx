@@ -53,7 +53,10 @@ function BasicExample() {
                   Sobre MusicCoWork
                 </div>
               </Nav.Link>
-              <Nav.Link>
+            </Nav>
+
+            <Nav className="navProfile">
+            <Nav.Link>
                 <div
                   className="headersName"
                   onClick={() => navigate("/register")}
@@ -104,7 +107,10 @@ function BasicExample() {
                   Sobre MusicCoWork
                 </div>
               </Nav.Link>
-              <NavDropdown
+            </Nav>
+
+            <Nav className="navProfile">
+            <NavDropdown
                 title={credentialsUser.credentials.name}
                 id="basic-nav-dropdown"
               >

@@ -24,6 +24,8 @@ function AllReservationsEvents() {
           setPagination(res.data.data);
         });
       };
+
+
   return (
     <>
       <Button
@@ -32,7 +34,7 @@ function AllReservationsEvents() {
         aria-controls="example-collapse-text"
         aria-expanded={openOne}
       >
-        Mostrar todas las reservas de salas
+        Mostrar todas las reservas de eventos
       </Button>
       <Collapse in={openOne}>
         <Container>
@@ -40,7 +42,7 @@ function AllReservationsEvents() {
             <Col xs={12} md={6} className=" mt-3 d-flex justify-content-center">
               <div className=" d-flex justify-content-center align-items-center">
                 <h5 className=" d-flex justify-content-center align-items-center titleConatinerRooms">
-                  Salas reservadas
+                  Eventos reservadas
                 </h5>
               </div>
             </Col>
@@ -58,13 +60,15 @@ function AllReservationsEvents() {
                         <h5>
                           Reserva realizada por: <strong>{user.name_user}</strong>
                         </h5>
-                        <h6>Sala reservada: {user.name_room}</h6>
+                        <h6>Evento reservado: {user.event}</h6>
                         <p>Fecha: {user.date}</p>
                       </div>
                     </Col>
                   ))}
                 </Row>
-                <Pagination
+                <Row>
+                  <Col className="d-flex justify-content-center">
+                  <Pagination
                   activePage={current_page}
                   totalItemsCount={total}
                   itemsCountPerPage={per_page}
@@ -72,6 +76,9 @@ function AllReservationsEvents() {
                   itemClass="page-item"
                   linkClass="page-link"
                 />
+                  </Col>
+                </Row>
+                
               </Container>
             ) : (
               <div className=" d-flex justify-content-center align-items-center mb-3">

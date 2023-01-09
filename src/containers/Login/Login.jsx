@@ -22,10 +22,10 @@ function Login() {
 
   const dispatch = useDispatch();
 
+  const [messageError, setMessageError] = useState("");
   const [user, setUser] = useState({
     email: "",
     password: "",
-    message: "",
   });
   let content = Object.values(user);
 
@@ -37,20 +37,27 @@ function Login() {
   };
   const logMe = () => {
     for (let value of content) {
+      console.log(value)
       if (value === "") {
-        setUser({ ...user, message: "Debes rellenar todos los datos" });
+        setMessageError("Debes rellenar todos los datos");
       } else {
-        setUser({ ...user, message: "" });
+        setMessageError("");
         loginUser(user).then((res) => {
           const token = res.data.token;
           dispatch(login({ token: token }));
-          profileUser(token).then((res) => {
-            dispatch(
-              login({ token, credentials: res.data.user, active: true })
-            );
-          });
+          profileUser(token)
+            .then((res) => {
+              dispatch(
+                login({ token, credentials: res.data.user, active: true })
+              );
+              navigate("/");
+            })
+            .catch((error) => {
+              if (error.response.data.message === "Wrong number of segments") {
+                setMessageError("Email o contraseña no válidos.");
+              }
+            });
         });
-        navigate("/");
       }
     }
   };
@@ -101,6 +108,11 @@ function Login() {
       <Row>
         <Col className=" d-flex justify-content-center">
           <h6 className="errorRepeatInput">{user.message}</h6>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className="messageError text-center">{messageError}</div>
         </Col>
       </Row>
       <Row>

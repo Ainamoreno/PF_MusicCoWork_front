@@ -29,7 +29,7 @@ function AllReservationsEvents() {
   return (
     <>
       <Button
-        className="mt-3 d-flex buttonCollapse"
+        className="my-3 d-flex buttonCollapse"
         onClick={() => getReservationsEvents(!openOne)}
         aria-controls="example-collapse-text"
         aria-expanded={openOne}

@@ -2,8 +2,15 @@
     background-image: url('./../../img/perfil.jpg');
     background-size:cover;
     background-repeat: no-repeat;
+    height: 30em;
+
+    .titleConatinerLogin{
+        font-family: Copperplate Gothic Light;
+    }
+
+    .messageError{
+        color: red;
+        font-weight: 600;
+    }
 }
 
-.titleConatinerLogin{
-    font-family: Copperplate Gothic Light;
-}

@@ -11,7 +11,7 @@ import "./DatePicker.scss";
 
 export default function ResponsiveDatePickers({ disabled, resetDate }) {
   const [messageError, setMessageError] = React.useState("");
-  const [value, setValue] = React.useState(dayjs(""));
+  const [value, setValue] = React.useState(dayjs("2023-10-02"));
   
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={"es"}>
@@ -24,7 +24,6 @@ export default function ResponsiveDatePickers({ disabled, resetDate }) {
           views={["year", "month", "day"]}
           value={value}
           onChange={(newValue) => {
-            // dispatch(reservation({ date: value.$d }));
             setValue(newValue);
             resetDate(newValue)
            

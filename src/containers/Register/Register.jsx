@@ -181,17 +181,18 @@ function Register() {
         </Col>
       </Row>
       <Row>
+        <Col className="text-center errorInput">
+          {messageError}
+        </Col>
+      </Row>
+      <Row>
         <Col className=" mt-3 mb-3 d-flex justify-content-center">
           <Button variant="secondary" onClick={() => register()}>
             Regístrate
           </Button>
         </Col>
       </Row>
-      <Row>
-        <Col className=" mt-3 mb-3 d-flex justify-content-center">
-          {messageError}
-        </Col>
-      </Row>
+      
     </Container>
   );
 }

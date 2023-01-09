@@ -30,3 +30,12 @@ export const reservations = async (body, token) => {
 export const registerUser = async (body) => {
   return await axios.post(`${route}/api/register`, body);
 };
+
+export const updateProfile = async (token, body) => {
+  var config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  return await axios.post(`${route}/api/update`, body, config);
+};

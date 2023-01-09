@@ -10,7 +10,6 @@ import "./DatePicker.scss";
 //Slice
 
 export default function ResponsiveDatePickers({ disabled, resetDate }) {
-  const [messageError, setMessageError] = React.useState("");
   const [value, setValue] = React.useState(dayjs("2023-10-02"));
   
   return (
@@ -31,7 +30,6 @@ export default function ResponsiveDatePickers({ disabled, resetDate }) {
           renderInput={(params) => <TextField {...params} />}
         />
       </Stack>
-      <h6>{messageError}</h6>
     </LocalizationProvider>
   );
 }

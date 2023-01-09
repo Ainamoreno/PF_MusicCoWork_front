@@ -1,12 +1,9 @@
 import React from "react";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import "./Login.scss";
-
 import { GiBeveledStar } from "react-icons/gi";
-
 //Redux
 import { useDispatch } from "react-redux";
-
 //UseNavigate
 import { useNavigate } from "react-router-dom";
 //React
@@ -37,7 +34,6 @@ function Login() {
   };
   const logMe = () => {
     for (let value of content) {
-      console.log(value)
       if (value === "") {
         setMessageError("Debes rellenar todos los datos");
       } else {

@@ -39,7 +39,7 @@ function ReservationsRooms() {
 
   if (reservations.length === 0) {
     return (
-      <Container>
+      <Container className="reservationsDesign">
         <Row>
           <h3 className="mt-5 d-flex justify-content-center titleReservations">
             Reservas realizadas:
@@ -60,7 +60,7 @@ function ReservationsRooms() {
     );
   } else {
     return (
-      <Container>
+      <Container className="reservationsDesign">
         <h3 className="mt-5 d-flex justify-content-center titleReservations">
           Reservas realizadas:
         </h3>

@@ -6,7 +6,6 @@ import { getAllReservationsEvents } from "./../../services/admin";
 import Collapse from "react-bootstrap/Collapse";
 import Pagination from "react-js-pagination";
 
-
 function AllReservationsEvents() {
     const credentialsUser = useSelector(userData);
 

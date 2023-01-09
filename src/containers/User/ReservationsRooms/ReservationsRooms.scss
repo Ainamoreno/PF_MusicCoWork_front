@@ -1,7 +1,12 @@
-.titleReservations{
-    font-family: Copperplate Gothic Light;
+.reservationsDesign{
+    min-height: 80vh;
+
+    .titleReservations{
+        font-family: Copperplate Gothic Light;
+    }
+    
+    .rowReservationDesign{
+        border-bottom: 2px solid rgba(0, 0, 0, 0.411);
+    }
 }
 
-.rowReservationDesign{
-    border-bottom: 2px solid rgba(0, 0, 0, 0.411);
-}

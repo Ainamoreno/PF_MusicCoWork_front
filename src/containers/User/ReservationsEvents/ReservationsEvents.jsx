@@ -26,7 +26,7 @@ function ReservationsEvents() {
   };
   if (reservations.length === 0) {
     return (
-      <Container>
+      <Container className="reservationsDesign">
         <Row>
           <h3 className="mt-5 d-flex justify-content-center titleReservations">
             Asistencias a actos reservadas:
@@ -47,7 +47,7 @@ function ReservationsEvents() {
     );
   } else {
     return (
-      <Container>
+      <Container className="reservationsDesign">
         <h3 className="mt-5 d-flex justify-content-center titleReservations">
           Asistencias a actos reservadas:
         </h3>

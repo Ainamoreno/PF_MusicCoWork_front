@@ -5,6 +5,7 @@ import CreateEvent from "../../components/CreateEvent/CreateEvent";
 import AllUsers from "../../components/AllUsers/AllUsers";
 import AllReservationsRooms from "../../components/AllReservationsRooms/AllReservationsRooms";
 import AllReservationsEvents from "../../components/AllReservationsEvents/AllReservationsEvents";
+import './Admin.scss'
 function Admin() {
   return (
     <Container className="adminDesign">

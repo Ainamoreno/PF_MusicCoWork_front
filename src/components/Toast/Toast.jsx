@@ -9,7 +9,7 @@ function AutohideExample({show, setShow}) {
   return (
     <Row  id='toastEv'>
       <Col xs={12} className="  d-flex justify-content-center">
-        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+        <Toast bg='danger' onClose={() => setShow(false)} show={show} delay={3000} autohide>
           <Toast.Header>
             <img
               src="holder.js/20x20?text=%20"

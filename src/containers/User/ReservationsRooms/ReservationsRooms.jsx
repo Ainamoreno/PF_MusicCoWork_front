@@ -70,10 +70,10 @@ function ReservationsRooms() {
               <Row  className="rowReservationDesign mb-3">
                 <Col className="mt-2 mb-3">
                   <h4 className=" d-flex justify-content-center">
-                    SALA RESERVADA:
+                    Reserva realizada en:
                   </h4>
                   <h5 className=" d-flex justify-content-center">
-                    {reserv.name}
+                   <strong><i>{reserv.name}</i></strong> 
                   </h5>
                   <h6 className=" d-flex justify-content-center">
                     Fecha de la reserva: {reserv.date}

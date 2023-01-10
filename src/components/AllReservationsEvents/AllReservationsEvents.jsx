@@ -7,23 +7,23 @@ import Collapse from "react-bootstrap/Collapse";
 import Pagination from "react-js-pagination";
 
 function AllReservationsEvents() {
-    const credentialsUser = useSelector(userData);
+  const credentialsUser = useSelector(userData);
 
-    const [openOne, setOpenOne] = useState(false);
-    const [allReservationsEvents, setAllReservationsEvents] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [pagination, setPagination] = useState({});
-    const { current_page, per_page, total } = pagination;
-    const getReservationsEvents = (isOpen, pageNumber) => {
-        setOpenOne(isOpen);
-        setLoading(true);
-        getAllReservationsEvents(credentialsUser.token, pageNumber).then((res) => {
-          setLoading(false);
-          setAllReservationsEvents(res.data.data.data);
-          setPagination(res.data.data);
-        });
-      };
-
+  const [openOne, setOpenOne] = useState(false);
+  const [allReservationsEvents, setAllReservationsEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [pagination, setPagination] = useState({});
+  const { current_page, per_page, total } = pagination;
+  const getReservationsEvents = (isOpen, pageNumber) => {
+    setOpenOne(isOpen);
+    setLoading(true);
+    getAllReservationsEvents(credentialsUser.token, pageNumber).then((res) => {
+      console.log(res.data.data)
+      setLoading(false);
+      setAllReservationsEvents(res.data.data.data);
+      setPagination(res.data.data);
+    });
+  };
 
   return (
     <>
@@ -52,14 +52,17 @@ function AllReservationsEvents() {
                 <Row>
                   {allReservationsEvents.map((user, index) => (
                     <Col
+                      xs={12}
+                      sm={4}
                       key={index}
                       className=" d-flex justify-content-center align-items-center mb-5"
                     >
                       <div className="cardUser me-3">
                         <h5>
-                          Reserva realizada por: <strong>{user.name_user}</strong>
+                          Reserva realizada por:{" "}
+                          <strong>{user.name_user}</strong>
                         </h5>
-                        <h6>Evento reservado: {user.event}</h6>
+                        <h6>Evento reservado: <strong>{user.name_event}</strong></h6>
                         <p>Fecha: {user.date}</p>
                       </div>
                     </Col>
@@ -67,17 +70,18 @@ function AllReservationsEvents() {
                 </Row>
                 <Row>
                   <Col className="d-flex justify-content-center">
-                  <Pagination
-                  activePage={current_page}
-                  totalItemsCount={total}
-                  itemsCountPerPage={per_page}
-                  onChange={(current_page) => getReservationsEvents(openOne, current_page)}
-                  itemClass="page-item"
-                  linkClass="page-link"
-                />
+                    <Pagination
+                      activePage={current_page}
+                      totalItemsCount={total}
+                      itemsCountPerPage={per_page}
+                      onChange={(current_page) =>
+                        getReservationsEvents(openOne, current_page)
+                      }
+                      itemClass="page-item"
+                      linkClass="page-link"
+                    />
                   </Col>
                 </Row>
-                
               </Container>
             ) : (
               <div className=" d-flex justify-content-center align-items-center mb-3">
@@ -88,8 +92,7 @@ function AllReservationsEvents() {
         </Container>
       </Collapse>
     </>
-  )
-
+  );
 }
 
-export default AllReservationsEvents
+export default AllReservationsEvents;

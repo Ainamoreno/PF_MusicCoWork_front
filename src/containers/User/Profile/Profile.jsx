@@ -44,7 +44,7 @@ function Profile() {
         <Col className="p-0">
           <div className=" pt-5 d-flex justify-content-center flex-column ">
             <h4 className="nameProfile d-flex justify-content-center">
-              Bienvenidx a MusicCoWork {credentialsUser.credentials.name}
+              Bienvenidx a MusicCoWork, {credentialsUser.credentials.name}
             </h4>
           </div>
         </Col>
@@ -53,7 +53,7 @@ function Profile() {
         <Col md={6} className=" pt-3 d-flex justify-content-center flex-column">
           <div className=" p-3 d-flex justify-content-center flex-column ">
             <h4 className="nameProfile d-flex justify-content-center">
-              Modifica los datos de tu perfil {credentialsUser.credentials.name}
+              Modifica los datos de tu perfil
             </h4>
           </div>
           <InputGroup className="mb-3 ">

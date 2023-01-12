@@ -24,6 +24,7 @@ function Login() {
     email: "",
     password: "",
   });
+
   let content = Object.values(user);
 
   const handler = (e) => {

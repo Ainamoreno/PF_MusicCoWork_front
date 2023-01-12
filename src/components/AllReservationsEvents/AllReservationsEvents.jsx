@@ -5,6 +5,7 @@ import { userData } from "./../../containers/User/userSlice";
 import { getAllReservationsEvents } from "./../../services/admin";
 import Collapse from "react-bootstrap/Collapse";
 import Pagination from "react-js-pagination";
+import './AllReservationsEvents.scss';
 
 function AllReservationsEvents() {
   const credentialsUser = useSelector(userData);
@@ -18,7 +19,6 @@ function AllReservationsEvents() {
     setOpenOne(isOpen);
     setLoading(true);
     getAllReservationsEvents(credentialsUser.token, pageNumber).then((res) => {
-      console.log(res.data.data)
       setLoading(false);
       setAllReservationsEvents(res.data.data.data);
       setPagination(res.data.data);
@@ -41,7 +41,7 @@ function AllReservationsEvents() {
             <Col xs={12} md={6} className=" mt-3 d-flex justify-content-center">
               <div className=" d-flex justify-content-center align-items-center">
                 <h5 className=" d-flex justify-content-center align-items-center titleConatinerRooms">
-                  Eventos reservadas
+                  Eventos reservados
                 </h5>
               </div>
             </Col>
@@ -49,27 +49,48 @@ function AllReservationsEvents() {
           <Row className="mt-5 d-flex justify-content-center">
             {!loading ? (
               <Container>
+                <Row className="rowTableEvents">
+                  <Col className=" d-flex justify-content-center align-items-center flex-column">
+                    <h5>Usuario</h5>
+                  </Col>
+                  <Col className=" d-flex justify-content-center align-items-center flex-column">
+                    <h5>Evento reservado:</h5>
+                  </Col>
+                  <Col className=" d-flex justify-content-center align-items-center flex-column">
+                    <h5>Fecha:</h5>
+                  </Col>
+                </Row>
                 <Row>
                   {allReservationsEvents.map((user, index) => (
-                    <Col
-                      xs={12}
-                      sm={4}
-                      key={index}
-                      className=" d-flex justify-content-center align-items-center mb-5"
-                    >
-                      <div className="cardUser me-3">
-                        <h5>
-                          Reserva realizada por:{" "}
-                          <strong>{user.name_user}</strong>
-                        </h5>
-                        <h6>Evento reservado: <strong>{user.name_event}</strong></h6>
-                        <p>Fecha: {user.date}</p>
-                      </div>
-                    </Col>
+                    <Container>
+                      <Row className="mt-5">
+                        <Col
+                          xs={12}
+                          sm={4}
+                          key={index}
+                          className=" d-flex justify-content-center align-items-center flex-column mb-3"
+                        >
+                          <div className="me-3">
+                            <h6>
+                              
+                              {user.name_user} {user.surname}
+                            </h6>
+                          </div>
+                        </Col>
+                        <Col className=" d-flex justify-content-center align-items-center">
+                          <h6>
+                            {user.name_event}
+                          </h6>
+                        </Col>
+                        <Col className=" d-flex justify-content-center align-items-center">
+                          <p>{user.date}</p>
+                        </Col>
+                      </Row>
+                    </Container>
                   ))}
                 </Row>
                 <Row>
-                  <Col className="d-flex justify-content-center">
+                  <Col className="d-flex justify-content-center mt-5">
                     <Pagination
                       activePage={current_page}
                       totalItemsCount={total}

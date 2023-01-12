@@ -48,27 +48,46 @@ function AllReservationsRooms() {
           <Row className="mt-5 d-flex justify-content-center">
             {!loading ? (
               <Container>
+                <Row className="rowTableEvents">
+                  <Col className=" d-flex justify-content-center align-items-center flex-column">
+                    <h5>Usuario</h5>
+                  </Col>
+                  <Col className=" d-flex justify-content-center align-items-center flex-column">
+                    <h5>Sala reservada:</h5>
+                  </Col>
+                  <Col className=" d-flex justify-content-center align-items-center flex-column">
+                    <h5>Fecha:</h5>
+                  </Col>
+                </Row>
                 <Row>
                   {allReservationsRooms.map((user, index) => (
-                    <Col
-                      xs={12}
-                      sm={4}
-                      key={index}
-                      className="d-flex justify-content-center align-items-center mb-5"
-                    >
-                      <div className="cardUser me-3">
-                        <h5>
-                          Reserva realizada por:{" "}
-                          <strong>{user.name_user}</strong>
-                        </h5>
-                        <h6>Sala reservada: <strong>{user.name_room}</strong></h6>
-                        <p>Fecha: {user.date}</p>
-                      </div>
-                    </Col>
+                    <Row className="mt-5">
+                      <Col
+                        xs={12}
+                        sm={4}
+                        key={index}
+                        className="d-flex justify-content-center align-items-center mb-3"
+                      >
+                        <div className="me-3">
+                          <h6>
+                           
+                            {user.name_user} {user.surname}
+                          </h6>
+                        </div>
+                      </Col>
+                      <Col className="d-flex justify-content-center align-items-center ">
+                        <h6>
+                          {user.name_room}
+                        </h6>
+                      </Col>
+                      <Col className="d-flex justify-content-center align-items-center ">
+                        <p>{user.date}</p>
+                      </Col>
+                    </Row>
                   ))}
                 </Row>
                 <Row>
-                  <Col className="d-flex justify-content-center">
+                  <Col className="d-flex justify-content-center mt-5">
                     <Pagination
                       activePage={current_page}
                       totalItemsCount={total}

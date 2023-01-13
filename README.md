@@ -10,6 +10,11 @@ Aplicación web de un CoWorking enfocado para músicos, existen diferentes salas
 
 Las tecnologías utilizadas han sido: HTML, SCSS, JavaScript, React y Redux.
 
+`Datos del admin:
+Email: admin@admin.com
+Contraseña: 123456
+`
+
 ##  <div id = "imagenes"> Imágenes
 
 Página principal: 
